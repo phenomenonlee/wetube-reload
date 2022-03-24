@@ -7,7 +7,7 @@
     "url": "git+https://github.com/phenomenonlee/wetube-reload.git"
   },
   "scripts": {
-    "win": "node index.js"
+    "dev": "nodemon --exec babel-node index.js"
   },
   "author": "Phenomenonlee",
   "license": "MIT",
@@ -17,5 +17,11 @@
   "homepage": "https://github.com/phenomenonlee/wetube-reload#readme",
   "dependencies": {
     "express": "^4.17.3"
+  },
+    "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "nodemon": "^2.0.15"
   }
 }
