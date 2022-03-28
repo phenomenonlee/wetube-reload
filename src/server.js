@@ -1,18 +1,19 @@
 import express from "express";
-
+ 
 const PORT = 7000;
+
 const app = express();
 
-const handleHome = (req, res) => {
-    return res.send("i still love you");
+const gossipMiddleware = (req, res, next) =>{
+    console.log(`Someone is going to:${req.url}`);
+    next();
 }
-
-const handleLogin = (req,res) =>{
-    return res.send("Login here");
+ 
+const handleHome = (req, res, next) => {
+    return res.send("<h1>i still love you</h1>");
 }
-app.get("/",handleHome);
-app.get("/login",handleLogin)
-
+app.get("/", gossipMiddleware, handleHome);
+ 
 const handleListening = () =>
 console.log(`✅Server listening on port http://localhost:${PORT} 🚀`);
 
