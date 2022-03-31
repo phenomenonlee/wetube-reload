@@ -3,7 +3,7 @@ import { handle } from "express/lib/application";
  
 const PORT = 7000;
 
-const app = express();
+const app = express(); 
 
 const logger = (req, res, next) =>{
     console.log(`${req.method}${req.url}`);
