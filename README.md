@@ -1,11 +1,16 @@
-/Home
-/join
-/login 
-/search
+# Wetube Reloaded
 
-/users/edit
-/users/delete
+/ -> Home
+/join -> Join
+/login -> Login
+/search -> Search
 
-/videos/watch
-/videos/edit
-/videos/delete
+/users/:id -> See User
+/users/logout -> Log Out
+/users/edit -> Edit My Profile
+/users/delete -> Delete user
+
+/videos/:id -> See Viedo
+/videos/:id/edit -> Edit Video
+/videos/:id/delete -> Delete Video
+/videos/upload -> Upload Viedo
