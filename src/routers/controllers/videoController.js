@@ -52,7 +52,15 @@ export const getUpload = (req, res) => {
 };
 
 export const postUpload = (req, res) => {
-  //here we wiil add a video to the videos array
-  //이곳에서 비디오를 비디오 array에 추가할 것이다.
+  const title = req.body.title;
+  const newVideo = {
+    title,
+    rating: 0,
+    comments: 0,
+    createdAt: "just now",
+    views: 0,
+    id: videos.length + 1,
+  };
+  videos.push(newVideo);
   return res.redirect("/");
 };
