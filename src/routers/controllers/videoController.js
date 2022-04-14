@@ -15,10 +15,12 @@ export const home = async (req, res) => {
   return res.render("home", { pageTitle: "Home", videos });
 };
 
-export const watch = (req, res) => {
+export const watch = async (req, res) => {
   const id = req.params.id;
+  const video = await Video.findById(id);
   return res.render("watch", {
-    pageTitle: `Watching`,
+    pageTitle: video.title,
+    video,
   });
 };
 export const getEdit = (req, res) => {
