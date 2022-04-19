@@ -11,7 +11,6 @@ console.log("finished")
 
 export const home = async (req, res) => {
   const videos = await Video.find({});
-  console.log(videos);
   return res.render("home", { pageTitle: "Home", videos });
 };
 
@@ -61,7 +60,7 @@ export const postUpload = async (req, res) => {
     await Video.create({
       title,
       description,
-      hashtags: hashtags.split(",").map((word) => `#${word}`),
+      hashtags,
     });
     return res.redirect("/");
   } catch (error) {
