@@ -2,6 +2,7 @@ import Video from "../../models/Video";
 
 export const home = async (req, res) => {
   const videos = await Video.find({}).sort({ createdAt: "desc" });
+  console.log(videos);
   return res.render("home", { pageTitle: "Home", videos });
 };
 
@@ -77,5 +78,6 @@ export const search = async (req, res) => {
       },
     });
   }
+  console.log(videos);
   return res.render("search", { pageTitle: "Search", videos });
 };
