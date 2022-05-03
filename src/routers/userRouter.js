@@ -5,6 +5,7 @@ import {
   logout,
   see,
   startGithublogin,
+  finishGithublogin,
 } from "./controllers/userController";
 
 const userRouter = express.Router();
