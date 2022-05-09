@@ -1,6 +1,7 @@
 import User from "../../models/User";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
+import { json } from "express/lib/response";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 export const postJoin = async (req, res) => {
@@ -40,6 +41,7 @@ export const postJoin = async (req, res) => {
 
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
+  
 export const postLogin = async (req, res) => {
   const { username, password } = req.body;
   const pageTitle = "Login";
@@ -101,7 +103,6 @@ export const finishGithublogin = async (req, res) => {
         },
       })
     ).json();
-    console.log(userData);
     const emailData = await (
       await fetch(`${apiUrl}/user/emails`, {
         headers: {
@@ -129,6 +130,7 @@ export const finishGithublogin = async (req, res) => {
     }
     req.session.loggedIn = true;
     req.session.user = user;
+    console.log(user);
     return res.redirect("/");
   } else {
     return res.redirect("/login");
@@ -139,5 +141,10 @@ export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
 };
-export const edit = (req, res) => res.send("Edit User");
+
+export const getEdit = (req, res) =>
+  res.render("edit-profile", { pageTitle: "Edit profile" });
+
+export const postEdit = (req, res) => res.render("edit-profile");
+
 export const see = (req, res) => res.send("See User");
