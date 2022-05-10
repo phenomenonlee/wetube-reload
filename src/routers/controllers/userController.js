@@ -32,6 +32,7 @@ export const postJoin = async (req, res) => {
     });
     return res.redirect("/login");
   } catch (error) {
+    console.log(error);
     return res.status(400).render("join", {
       pageTitle,
       errorMessage: error._message,
@@ -119,7 +120,7 @@ export const finishGithublogin = async (req, res) => {
     let user = await User.findOne({ eamil: emailObj.email });
     if (!user) {
       user = await User.create({
-        avatarUrl: userData.avatarUrl,
+        avatarUrl: userData.avatar_Url,
         name: userData.name,
         username: userData.login,
         email: emailObj.email,
@@ -130,7 +131,6 @@ export const finishGithublogin = async (req, res) => {
     }
     req.session.loggedIn = true;
     req.session.user = user;
-    console.log(user);
     return res.redirect("/");
   } else {
     return res.redirect("/login");
@@ -152,13 +152,29 @@ export const postEdit = async (req, res) => {
     },
     body: { name, email, username, location },
   } = req;
-  await User.findByIdAndUpdate(_id, {
-    name,
-    email,
-    username,
-    location,
-  });
-  return res.render("edit-profile");
+
+  const updateUser = await User.findByIdAndUpdate(
+    _id,
+    {
+      name,
+      email,
+      username,
+      location,
+    },
+    { new: true }
+  );
+  req.session.user = updateUser;
+  return res.redirect("/users/edit");
+};
+
+export const getChangePassword = (req, res) => {
+  if (req.session.user.socialOnly === true) {
+    return res.redirect("/");
+  }
+  return res.render("users/change-password", { pageTitle: "Change Password" });
+};
+export const postChangePassword = (req, res) => {
+  return res.redirect("/");
 };
 
 export const see = (req, res) => res.send("See User");
