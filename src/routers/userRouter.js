@@ -32,6 +32,6 @@ userRouter
 
 userRouter.get("/github/start", publicOnlyMiddleware, startGithublogin);
 userRouter.get("/github/finish", publicOnlyMiddleware, finishGithublogin);
-userRouter.get("/id", see);
+userRouter.get("/:id", see);
 
 export default userRouter;
