@@ -3,11 +3,18 @@ const video = document.getElementById("preview");
 
 let recorder;
 let stream;
+let videoFile;
 
-const handleDownload = () => {};
+const handleDownload = () => {
+  const a = document.createElement("a");
+  a.href = videoFile;
+  a.download = "My Recording.webm";
+  document.body.appendChild(a);
+  a.click();
+};
 
 const handleStop = () => {
-  startBtn.innerText = "Download Recordin";
+  startBtn.innerText = "Download Recording";
   startBtn.removeEventListener("click", handleStop);
   startBtn.addEventListener("click", handleDownload);
   recorder.stop();
@@ -19,7 +26,7 @@ const handleStart = () => {
   startBtn.addEventListener("click", handleStop);
   recorder = new window.MediaRecorder(stream);
   recorder.ondataavailable = (event) => {
-    const videoFile = URL.createObjectURL(event.data);
+    videoFile = URL.createObjectURL(event.data);
     video.srcObject = null;
     video.src = videoFile;
     video.loop = true;
@@ -30,12 +37,13 @@ const handleStart = () => {
 
 const init = async () => {
   stream = await navigator.mediaDevices.getUserMedia({
-    audio: true,
+    //audio: true,
     video: { with: 400, height: 400 },
   });
   video.srcObject = stream;
   video.play();
 };
+
 init();
 
 startBtn.addEventListener("click", handleStart);
