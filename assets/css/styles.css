@@ -194,6 +194,10 @@ footer {
   font-size: 12px;
 }
 
+.video-mixin:hover {
+  cursor: pointer;
+}
+
 .empty__message {
   margin-bottom: 50px;
   font-size: 18px;
@@ -328,6 +332,10 @@ input[type=submit]:disabled,
 }
 #videoContainer .videoControls .videoControls__volume span i {
   font-size: 20px;
+}
+
+#videoContainer:hover {
+  cursor: pointer;
 }
 
 .search__form {
