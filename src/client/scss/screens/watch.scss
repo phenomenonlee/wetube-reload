@@ -1,0 +1,33 @@
+.video__data {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  .video__title {
+    font-size: 45px;
+    margin-bottom: 5px;
+  }
+  .video__description {
+    margin-top: 20px;
+    font-size: 17px;
+  }
+  .video__createdAt {
+    margin-top: 100px;
+    font-size: 17px;
+  }
+  .video__owner {
+    margin-bottom: 5px;
+    font-size: 17px;
+    a {
+      color: whitesmoke;
+      text-decoration: underline;
+    }
+  }
+}
+.edit_button {
+  width: 125px;
+  font-size: 17px;
+}
+.delete_button {
+  width: 140px;
+  font-size: 17px;
+}
