@@ -63,7 +63,12 @@ main {
   animation: goAway 0.5s ease-in-out forwards;
   animation-delay: 3s;
   &.error {
-    background-color: gray;
+    background-color: red;
     color: white;
   }
+}
+.success,
+.info {
+  background-color: gray;
+  color: white;
 }

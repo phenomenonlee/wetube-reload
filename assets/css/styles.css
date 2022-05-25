@@ -488,6 +488,12 @@ main {
   animation-delay: 3s;
 }
 .message.error {
+  background-color: red;
+  color: white;
+}
+
+.success,
+.info {
   background-color: gray;
   color: white;
 }
