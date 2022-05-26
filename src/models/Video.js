@@ -1,4 +1,3 @@
-import { type } from "express/lib/response";
 import mongoose from "mongoose";
 
 const videoSchema = new mongoose.Schema({
@@ -8,13 +7,13 @@ const videoSchema = new mongoose.Schema({
   description: { type: String, required: true, trim: true, minLength: 2 },
   createdAt: { type: Date, required: true, default: Date.now },
   hashtags: [{ type: String, trim: true }],
+  comments: [
+    { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Comment" },
+  ],
   meta: {
     views: { type: Number, default: 0, required: true },
     rating: { type: Number, default: 0, required: true },
   },
-  commets: [
-    { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Comment" },
-  ],
   owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
 });
 
