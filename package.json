@@ -8,9 +8,11 @@
   },
   "scripts": {
     "start": "node build/init.js",
+    "build": "npm run build:sever && npm run build:assets",
     "build:sever": "babel src -d build",
+    "build:assets": "webpack --mode=production",
     "dev:sever": "nodemon",
-    "dev:assets": "webpack"
+    "dev:assets": "webpack --mode=development"
   },
   "author": "Phenomenonlee",
   "license": "MIT",
