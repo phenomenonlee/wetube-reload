@@ -12,7 +12,7 @@
     "build:sever": "babel src -d build",
     "build:assets": "webpack --mode=production",
     "dev:sever": "nodemon",
-    "dev:assets": "webpack --mode=development"
+    "dev:assets": "webpack --mode=development -w"
   },
   "author": "Phenomenonlee",
   "license": "MIT",
