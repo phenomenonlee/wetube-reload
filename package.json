@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node build/init.js",
     "build": "npm run build:sever && npm run build:assets",
-    "build:sever": "babel src -d build",
+    "build:sever": "babel src -d build --ignore src/client",
     "build:assets": "webpack --mode=production",
     "dev:sever": "nodemon",
     "dev:assets": "webpack --mode=development -w"
