@@ -19,10 +19,8 @@ header
                     a(href=`/users/${loggedInUser._id}`)
                         if !loggedInUser.avatarUrl
                             span 😀
-                        else if isHeroku 
-                            img.header__avatar(src="/"+loggedInUser.avatarUrl,crossorigin)
-                        else 
-                            img.header__avatar(src="/"+loggedInUser.avatarUrl,crossorigin)
+                        else
+                            img.header__avatar(src=loggedInUser.avatarUrl,crossorigin)
                 
             else
                 li
