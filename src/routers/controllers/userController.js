@@ -154,7 +154,7 @@ export const postEdit = async (req, res) => {
     body: { name, email, username, location },
     file,
   } = req;
-  const isHeroku = process.env.NODE_ENV === "prodution";
+  const isHeroku = process.env.NODE_ENV === "production";
   const updateUser = await User.findByIdAndUpdate(
     _id,
     {
@@ -166,6 +166,7 @@ export const postEdit = async (req, res) => {
     },
     { new: true }
   );
+  console.log(avatarUrl);
   req.session.user = updateUser;
   return res.redirect("/users/edit");
 };
