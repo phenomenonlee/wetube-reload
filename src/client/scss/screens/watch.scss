@@ -45,5 +45,15 @@
     background-color: white;
     color: black;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
   }
+  #deleteBtn {
+    background-color: white;
+    border-style: none;
+    margin-bottom: 2px;
+  }
+}
+#deleteBtn:hover {
+  cursor: pointer;
 }

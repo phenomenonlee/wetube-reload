@@ -54,8 +54,10 @@ const formatTime = (seconds) =>
   new Date(seconds * 1000).toISOString().substring(14, 19);
 
 const handleLoadedMetadata = () => {
-  totalTime.innerText = formatTime(Math.floor(video.duration));
-  timeline.max = Math.floor(video.duration);
+  setTimeout(() => {
+    totalTime.innerText = formatTime(Math.floor(video.duration));
+    timeline.max = Math.floor(video.duration);
+  }, 100);
 };
 
 const handleTimeUpdate = () => {
@@ -105,6 +107,19 @@ const handleEnded = () => {
   fetch(`/api/videos/${id}/view`, { method: "POST" });
 };
 
+const handleKeyDown = (event) => {
+  if (event.keyCode === 32) {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+    playBtnIcon.classList = video.paused ? "fas fa-play" : "fas fa-pause";
+  } else if (event.keyCode === 116) {
+    location.reload();
+  }
+};
+
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
@@ -116,3 +131,4 @@ videoContainer.addEventListener("mousemove", handleMouseMove);
 videoContainer.addEventListener("mouseleave", handleMouseLeave);
 timeline.addEventListener("input", handleTimelineChange);
 fullScreenBtn.addEventListener("click", handleFullscreen);
+window.addEventListener("keydown", handleKeyDown);

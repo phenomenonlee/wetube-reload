@@ -223,11 +223,11 @@ footer {
   border-radius: 50%;
 }
 
-form {
+form:not(.delete_form) {
   max-width: 420px;
   margin: 0 auto;
 }
-form:not(.search__form) {
+form:not(.delete_form):not(.search__form) {
   padding: 30px;
   background-color: rgba(14, 17, 23, 0.7);
   border-radius: 10px;
@@ -334,7 +334,7 @@ input[type=submit]:disabled,
   font-size: 20px;
 }
 
-#videoContainer:hover {
+.videoControls:hover {
   cursor: pointer;
 }
 
@@ -460,6 +460,17 @@ form label {
   background-color: white;
   color: black;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.video__comments #deleteBtn {
+  background-color: white;
+  border-style: none;
+  margin-bottom: 2px;
+}
+
+#deleteBtn:hover {
+  cursor: pointer;
 }
 
 a {
